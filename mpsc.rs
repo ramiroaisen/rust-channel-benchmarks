@@ -4,6 +4,7 @@ std::include!("z_types.rs");
 std::include!("settings.rs");
 std::include!("z_run.rs");
 
+#[allow(unused)]
 fn seq_async<T: BenchType>() {
     let (tx, rx) = mpsc::channel();
 
@@ -16,6 +17,7 @@ fn seq_async<T: BenchType>() {
     }
 }
 
+#[allow(unused)]
 fn seq_sync<T: BenchType>(cap: usize) {
     let (tx, rx) = mpsc::sync_channel(cap);
 
@@ -28,6 +30,7 @@ fn seq_sync<T: BenchType>(cap: usize) {
     }
 }
 
+#[allow(unused)]
 fn spsc_async<T: BenchType>() {
     let (tx, rx) = mpsc::channel();
 
@@ -45,6 +48,7 @@ fn spsc_async<T: BenchType>() {
     .unwrap();
 }
 
+#[allow(unused)]
 fn spsc_sync<T: BenchType>(cap: usize) {
     let (tx, rx) = mpsc::sync_channel(cap);
 
@@ -62,6 +66,7 @@ fn spsc_sync<T: BenchType>(cap: usize) {
     .unwrap();
 }
 
+#[allow(unused)]
 fn mpsc_async<T: BenchType>() {
     let (tx, rx) = mpsc::channel();
 
@@ -82,6 +87,7 @@ fn mpsc_async<T: BenchType>() {
     .unwrap();
 }
 
+#[allow(unused)]
 fn mpsc_sync<T: BenchType>(cap: usize) {
     let (tx, rx) = mpsc::sync_channel(cap);
 
@@ -104,45 +110,45 @@ fn mpsc_sync<T: BenchType>(cap: usize) {
 
 fn main() {
     println!("std::mpsc");
-    run!("bounded0_mpsc(empty)", mpsc_sync::<BenchEmpty>(0));
+    // run!("bounded0_mpsc(empty)", mpsc_sync::<BenchEmpty>(0));
     run!("bounded0_spsc(empty)", spsc_sync::<BenchEmpty>(0));
 
-    run!("bounded1_mpsc(empty)", mpsc_sync::<BenchEmpty>(1));
-    run!("bounded1_spsc(empty)", spsc_sync::<BenchEmpty>(1));
+    // run!("bounded1_mpsc(empty)", mpsc_sync::<BenchEmpty>(1));
+    // run!("bounded1_spsc(empty)", spsc_sync::<BenchEmpty>(1));
 
-    run!("bounded_mpsc(empty)", mpsc_sync::<BenchEmpty>(MESSAGES));
-    run!("bounded_seq(empty)", seq_sync::<BenchEmpty>(MESSAGES));
-    run!("bounded_spsc(empty)", spsc_sync::<BenchEmpty>(MESSAGES));
+    // run!("bounded_mpsc(empty)", mpsc_sync::<BenchEmpty>(MESSAGES));
+    // run!("bounded_seq(empty)", seq_sync::<BenchEmpty>(MESSAGES));
+    // run!("bounded_spsc(empty)", spsc_sync::<BenchEmpty>(MESSAGES));
 
-    run!("unbounded_mpsc(empty)", mpsc_async::<BenchEmpty>());
-    run!("unbounded_seq(empty)", seq_async::<BenchEmpty>());
-    run!("unbounded_spsc(empty)", spsc_async::<BenchEmpty>());
+    // run!("unbounded_mpsc(empty)", mpsc_async::<BenchEmpty>());
+    // run!("unbounded_seq(empty)", seq_async::<BenchEmpty>());
+    // run!("unbounded_spsc(empty)", spsc_async::<BenchEmpty>());
 
-    run!("bounded0_mpsc(usize)", mpsc_sync::<BenchUsize>(0));
+    // run!("bounded0_mpsc(usize)", mpsc_sync::<BenchUsize>(0));
     run!("bounded0_spsc(usize)", spsc_sync::<BenchUsize>(0));
 
-    run!("bounded1_mpsc(usize)", mpsc_sync::<BenchUsize>(1));
-    run!("bounded1_spsc(usize)", spsc_sync::<BenchUsize>(1));
+    // run!("bounded1_mpsc(usize)", mpsc_sync::<BenchUsize>(1));
+    // run!("bounded1_spsc(usize)", spsc_sync::<BenchUsize>(1));
 
-    run!("bounded_mpsc(usize)", mpsc_sync::<BenchUsize>(MESSAGES));
-    run!("bounded_seq(usize)", seq_sync::<BenchUsize>(MESSAGES));
-    run!("bounded_spsc(usize)", spsc_sync::<BenchUsize>(MESSAGES));
+    // run!("bounded_mpsc(usize)", mpsc_sync::<BenchUsize>(MESSAGES));
+    // run!("bounded_seq(usize)", seq_sync::<BenchUsize>(MESSAGES));
+    // run!("bounded_spsc(usize)", spsc_sync::<BenchUsize>(MESSAGES));
 
-    run!("unbounded_mpsc(usize)", mpsc_async::<BenchUsize>());
-    run!("unbounded_seq(usize)", seq_async::<BenchUsize>());
-    run!("unbounded_spsc(usize)", spsc_async::<BenchUsize>());
+    // run!("unbounded_mpsc(usize)", mpsc_async::<BenchUsize>());
+    // run!("unbounded_seq(usize)", seq_async::<BenchUsize>());
+    // run!("unbounded_spsc(usize)", spsc_async::<BenchUsize>());
 
-    run!("bounded0_mpsc(big)", mpsc_sync::<BenchFixedArray>(0));
+    // run!("bounded0_mpsc(big)", mpsc_sync::<BenchFixedArray>(0));
     run!("bounded0_spsc(big)", spsc_sync::<BenchFixedArray>(0));
 
-    run!("bounded1_mpsc(big)", mpsc_sync::<BenchFixedArray>(1));
-    run!("bounded1_spsc(big)", spsc_sync::<BenchFixedArray>(1));
+    // run!("bounded1_mpsc(big)", mpsc_sync::<BenchFixedArray>(1));
+    // run!("bounded1_spsc(big)", spsc_sync::<BenchFixedArray>(1));
 
-    run!("bounded_mpsc(big)", mpsc_sync::<BenchFixedArray>(MESSAGES));
-    run!("bounded_seq(big)", seq_sync::<BenchFixedArray>(MESSAGES));
-    run!("bounded_spsc(big)", spsc_sync::<BenchFixedArray>(MESSAGES));
+    // run!("bounded_mpsc(big)", mpsc_sync::<BenchFixedArray>(MESSAGES));
+    // run!("bounded_seq(big)", seq_sync::<BenchFixedArray>(MESSAGES));
+    // run!("bounded_spsc(big)", spsc_sync::<BenchFixedArray>(MESSAGES));
 
-    run!("unbounded_mpsc(big)", mpsc_async::<BenchFixedArray>());
-    run!("unbounded_seq(big)", seq_async::<BenchFixedArray>());
-    run!("unbounded_spsc(big)", spsc_async::<BenchFixedArray>());
+    // run!("unbounded_mpsc(big)", mpsc_async::<BenchFixedArray>());
+    // run!("unbounded_seq(big)", seq_async::<BenchFixedArray>());
+    // run!("unbounded_spsc(big)", spsc_async::<BenchFixedArray>());
 }

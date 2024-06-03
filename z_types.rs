@@ -24,7 +24,7 @@ impl BenchType for BenchEmpty {
 
 impl BenchType for BenchUsize {
     fn new(v: usize) -> Self {
-        return Self { a: v };
+        Self { a: v }
     }
     #[inline(always)]
     fn test(&self) {
@@ -36,7 +36,7 @@ impl BenchType for BenchUsize {
 
 impl BenchType for BenchFixedArray {
     fn new(v: usize) -> Self {
-        return BenchFixedArray([v; 4]);
+        BenchFixedArray([v; 4])
     }
 
     #[inline(always)]
@@ -50,7 +50,7 @@ impl BenchType for BenchFixedArray {
 
 impl BenchType for BenchBoxed {
     fn new(v: usize) -> Self {
-        return BenchBoxed(BenchFixedArray([v; 4]).into());
+        BenchBoxed(BenchFixedArray([v; 4]).into())
     }
 
     #[inline(always)]

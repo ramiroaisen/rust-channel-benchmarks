@@ -9,8 +9,12 @@ from PIL import Image
 def read_data(files):
     benchs = {}
     # only to keep list shorted
-    names = ["kanal", "kanal-async", "kanal-std-mutex", "kanal-std-mutex-async",
-             "crossbeam-channel", "flume", "flume-async", "async-channel", "std::mpsc", "futures-channel"]
+    names = [
+        # "async-stream",
+        "proxide-spsc",
+        "tokio-mpsc",
+        "kanal", "kanal-async", "kanal-std-mutex", "kanal-std-mutex-async",
+             "crossbeam-channel", "flume", "flume-async", "std::mpsc", "futures-channel"]
     for f in files:
         with open(f) as f:
             lines = f.readlines()
@@ -33,7 +37,8 @@ def read_data(files):
     return benchs, names
 
 
-labels = ["seq", "spsc", "mpsc", "mpmc"]  # "select_rx", "select_both"
+# labels = ["seq", "spsc", "mpsc", "mpmc"]  # "select_rx", "select_both"
+labels = ["spsc"]
 variants = ["empty", "usize", "big"]
 
 
@@ -46,9 +51,9 @@ def sortFn(key):
 
 titles = {
     "bounded0": "Bounded Channel With Size 0 Benchmark\n(Operations per second, Higher is better)",
-    "bounded1": "Bounded Channel With Size 1 Benchmark\n(Operations per second, Higher is better)",
-    "bounded": "Bounded Channel With Size N Benchmark\n(Operations per second, Higher is better)",
-    "unbounded": "Unbounded Channel Benchmark\n(Operations per second, Higher is better)",
+    # "bounded1": "Bounded Channel With Size 1 Benchmark\n(Operations per second, Higher is better)",
+    # "bounded": "Bounded Channel With Size N Benchmark\n(Operations per second, Higher is better)",
+    # "unbounded": "Unbounded Channel Benchmark\n(Operations per second, Higher is better)",
 }
 
 
@@ -99,6 +104,9 @@ color_set = {
 
 
 colors = {
+    # "async-stream": "lightblue",
+    "tokio-mpsc": "magenta",
+    "proxide-scsp": "indigo",
     "kanal": "green",
     "kanal-async": "azure",
     "kanal-std-mutex": "gold",
@@ -106,7 +114,7 @@ colors = {
     "go": "blue",
     "flume": "purple",
     "flume-async": "lightpurple",
-    "async-channel": "lightblue",
+    # "async-channel": "lightblue",
     "crossbeam-channel": "red",
     "std::mpsc": "brown",
     "futures-channel": "lightbrown",
@@ -218,9 +226,10 @@ def chart(benchs, names):
         chart.render_to_file("target/plot_{}.svg".format(bench_name))
     imgs = []
     for bench_name in ["bounded0",
-                       "bounded1",
-                       "bounded",
-                       "unbounded"]:
+                    #    "bounded1",
+                    #    "bounded",
+                    #    "unbounded"
+                    ]:
         imgs.append(Image.open("target/plot_{}.png".format(bench_name)))
     concat_vertical(imgs, "target/results.png")
 

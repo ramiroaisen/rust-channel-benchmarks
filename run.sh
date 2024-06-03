@@ -3,16 +3,21 @@ export RUSTFLAGS="-C target-cpu=native"
 set -euxo pipefail
 IFS=$'\n\t'
 SLEEP_SEC=2
-cd "$(dirname "$0")"
+# cd "$(dirname "$0")"
 
-rm -rf kanal2
-git clone https://github.com/fereidani/kanal/ kanal2 # hack to be able to reimport kanal with cargo
+# rm -rf kanal2
+# git clone https://github.com/fereidani/kanal/ kanal2 # hack to be able to reimport kanal with cargo
 
-cargo clean
-cargo update
+# cargo clean
+# cargo update
 
-mkdir -p target
+# mkdir -p target
 
+rm -rf ./target/*.csv
+
+# cargo build --release --bin async-stream
+cargo build --release --bin proxide-spsc
+cargo build --release --bin tokio-mpsc
 cargo build --release --bin mpsc
 cargo build --release --bin futures-channel
 cargo build --release --bin flume
@@ -25,7 +30,12 @@ cargo build --release --bin kanal-std-mutex
 cargo build --release --bin kanal-std-mutex-async
 go build -o target/release/go_bench go.go
 
-
+# sleep $SLEEP_SEC
+# ./target/release/async-stream | tee target/async-stream.csv
+sleep $SLEEP_SEC
+./target/release/tokio-mpsc | tee target/tokio-mpsc.csv
+sleep $SLEEP_SEC
+./target/release/proxide-spsc | tee target/proxide-spsc.csv
 sleep $SLEEP_SEC
 ./target/release/mpsc | tee target/mpsc.csv
 sleep $SLEEP_SEC
@@ -37,8 +47,8 @@ sleep $SLEEP_SEC
 sleep $SLEEP_SEC
 ./target/release/crossbeam-channel | tee target/crossbeam-channel.csv
 sleep $SLEEP_SEC
-./target/release/async-channel | tee target/async-channel.csv
-sleep $SLEEP_SEC
+# ./target/release/async-channel | tee target/async-channel.csv
+# sleep $SLEEP_SEC
 ./target/release/kanal | tee target/kanal.csv
 sleep $SLEEP_SEC
 ./target/release/kanal-async | tee target/kanal-async.csv

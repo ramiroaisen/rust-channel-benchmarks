@@ -305,48 +305,48 @@ func main() {
 
 	fmt.Println(strings.Replace(runtime.Version(), "go", "go chan", 1))
 
-	run("bounded0_mpmc(empty)", mpmc_empty, 0)
-	run("bounded0_mpsc(empty)", mpsc_empty, 0)
+	// run("bounded0_mpmc(empty)", mpmc_empty, 0)
+	// run("bounded0_mpsc(empty)", mpsc_empty, 0)
 	run("bounded0_spsc(empty)", spsc_empty, 0)
 
-	run("bounded1_mpmc(empty)", mpmc_empty, 1)
-	run("bounded1_mpsc(empty)", mpsc_empty, 1)
-	run("bounded1_spsc(empty)", spsc_empty, 1)
+	// run("bounded1_mpmc(empty)", mpmc_empty, 1)
+	// run("bounded1_mpsc(empty)", mpsc_empty, 1)
+	// run("bounded1_spsc(empty)", spsc_empty, 1)
 
-	run("bounded_mpmc(empty)", mpmc_empty, MESSAGES)
-	run("bounded_mpsc(empty)", mpsc_empty, MESSAGES)
+	// run("bounded_mpmc(empty)", mpmc_empty, MESSAGES)
+	// run("bounded_mpsc(empty)", mpsc_empty, MESSAGES)
 
-	run("bounded_seq(empty)", seq_empty, MESSAGES)
-	run("bounded_spsc(empty)", spsc_empty, MESSAGES)
+	// run("bounded_seq(empty)", seq_empty, MESSAGES)
+	// run("bounded_spsc(empty)", spsc_empty, MESSAGES)
 
 	// usize test
-	run("bounded0_mpmc(usize)", mpmc, 0)
-	run("bounded0_mpsc(usize)", mpsc, 0)
+	// run("bounded0_mpmc(usize)", mpmc, 0)
+	// run("bounded0_mpsc(usize)", mpsc, 0)
 	run("bounded0_spsc(usize)", spsc, 0)
 
-	run("bounded1_mpmc(usize)", mpmc, 1)
-	run("bounded1_mpsc(usize)", mpsc, 1)
-	run("bounded1_spsc(usize)", spsc, 1)
+	// run("bounded1_mpmc(usize)", mpmc, 1)
+	// run("bounded1_mpsc(usize)", mpsc, 1)
+	// run("bounded1_spsc(usize)", spsc, 1)
 
-	run("bounded_mpmc(usize)", mpmc, MESSAGES)
-	run("bounded_mpsc(usize)", mpsc, MESSAGES)
+	// run("bounded_mpmc(usize)", mpmc, MESSAGES)
+	// run("bounded_mpsc(usize)", mpsc, MESSAGES)
 
-	run("bounded_seq(usize)", seq, MESSAGES)
-	run("bounded_spsc(usize)", spsc, MESSAGES)
+	// run("bounded_seq(usize)", seq, MESSAGES)
+	// run("bounded_spsc(usize)", spsc, MESSAGES)
 
 	// big test
-	run("bounded0_mpmc(big)", mpmc_big, 0)
-	run("bounded0_mpsc(big)", mpsc_big, 0)
+	// run("bounded0_mpmc(big)", mpmc_big, 0)
+	// run("bounded0_mpsc(big)", mpsc_big, 0)
 	run("bounded0_spsc(big)", spsc_big, 0)
 
-	run("bounded1_mpmc(big)", mpmc_big, 1)
-	run("bounded1_mpsc(big)", mpsc_big, 1)
-	run("bounded1_spsc(big)", spsc_big, 1)
+	// run("bounded1_mpmc(big)", mpmc_big, 1)
+	// run("bounded1_mpsc(big)", mpsc_big, 1)
+	// run("bounded1_spsc(big)", spsc_big, 1)
 
-	run("bounded_mpmc(big)", mpmc_big, MESSAGES)
-	run("bounded_mpsc(big)", mpsc_big, MESSAGES)
+	// run("bounded_mpmc(big)", mpmc_big, MESSAGES)
+	// run("bounded_mpsc(big)", mpsc_big, MESSAGES)
 
-	run("bounded_seq(big)", seq_big, MESSAGES)
-	run("bounded_spsc(big)", spsc_big, MESSAGES)
+	// run("bounded_seq(big)", seq_big, MESSAGES)
+	// run("bounded_spsc(big)", spsc_big, MESSAGES)
 
 }

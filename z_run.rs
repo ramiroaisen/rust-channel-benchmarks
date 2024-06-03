@@ -1,4 +1,6 @@
+#[allow(unused)]
 use std::time::Duration;
+#[allow(unused)]
 use std::time::Instant;
 
 #[allow(unused_macros)]

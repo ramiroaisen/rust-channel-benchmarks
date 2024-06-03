@@ -1,3 +1,4 @@
+#[allow(unused)]
 async fn mpmc<T: BenchType + 'static>(cap: Option<usize>) {
     let (tx, rx) = new(cap);
     let mut list = Vec::new();
@@ -26,6 +27,7 @@ async fn mpmc<T: BenchType + 'static>(cap: Option<usize>) {
     }
 }
 
+#[allow(unused)]
 async fn mpsc<T: BenchType + 'static>(cap: Option<usize>) {
     let (tx, rx) = new(cap);
     let mut list = Vec::new();
@@ -51,6 +53,7 @@ async fn mpsc<T: BenchType + 'static>(cap: Option<usize>) {
     }
 }
 
+#[allow(unused)]
 async fn seq<T: BenchType + 'static>(cap: Option<usize>) {
     let (tx, rx) = new(cap);
 
@@ -67,6 +70,7 @@ async fn seq<T: BenchType + 'static>(cap: Option<usize>) {
     h.await.unwrap();
 }
 
+#[allow(unused)]
 async fn spsc<T: BenchType + 'static>(cap: Option<usize>) {
     let (tx, rx) = new(cap);
 

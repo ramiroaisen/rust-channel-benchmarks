@@ -1,3 +1,4 @@
+#[allow(unused)]
 fn seq<T: BenchType>(cap: Option<usize>) {
     let (tx, rx) = new(cap);
 

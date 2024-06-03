@@ -1,3 +1,4 @@
+#[allow(unused)]
 fn spsc<T: BenchType>(cap: Option<usize>) {
     let (tx, rx) = new(cap);
 
